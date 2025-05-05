@@ -2,7 +2,7 @@
 #                 They can contain abstract methods, which are declared  but have  no implementation
 
 from abc import ABC, abstractmethod
-
+from math import pi
 class Vehicle(ABC):
   def __init__(self):
     pass
@@ -32,11 +32,14 @@ car.go()
 
 # super class
 
-class Shape:
+class Shape(ABC):
   def __init__(self, color, is_filled):
     self.color = color
     self.is_filled = is_filled
-
+    
+  @abstractmethod
+  def area(self):
+    pass
 
 class Circle(Shape):
   def __init__(self, color, is_filled, radius):
@@ -44,6 +47,9 @@ class Circle(Shape):
     self.radius = radius
   def __str__(self):
     return f"Circle(color={self.color}, filled={self.is_filled}, radius={self.radius})"
+  
+  def area(self):
+    return pi * self.radius
 
 class Rectangle(Shape):
   def __init__(self, color, is_filled, width, height):
@@ -62,3 +68,4 @@ rect = Rectangle(color="Yellow", is_filled=True, width=10, height=5)
 
 print(rect)
 print(rect.area())
+print(circle.area())
