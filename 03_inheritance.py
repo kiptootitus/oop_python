@@ -36,7 +36,7 @@ class Duck(Animal):
     pass
   
 class Horse(Animal):
-    pass
+    pass  
 
 
 
@@ -69,3 +69,51 @@ class Dog(Animal):
 
 # Usage
 d = Dog("Buddy", "Labrador")
+
+
+
+# multiple inheritance = inherits more that 1 parent class  C(A, B)
+# Multi-leve inheritance 
+class Animal:
+    def __init__(self, name):
+        self.name =name
+        
+    def eat(self):
+        return f"{self.name} is eating."
+  
+    def sleeping(self):
+        return f"{self.name} is sleeping"
+
+class Preditor(Animal):
+    def hunt(self):
+        return "The preditor is hunting"
+    
+class Prey(Animal):
+    def flee(self):
+        return "The prey is fleeing"
+    
+    
+class Rabbit(Prey):
+    pass
+
+class Hawk(Preditor):
+    pass
+
+class Fish(Preditor, Prey): # Multiple inheritance from fish bigger fish can eat smaller fish 
+    pass
+
+
+rabbit = Rabbit("Nano")
+print(rabbit.flee())       # The prey is fleeing
+
+hawk = Hawk("Hawk eye")
+print(hawk.hunt())         # The predator is hunting
+
+fish = Fish("Kara")
+print(fish.hunt())         # The predator is hunting
+print(fish.flee())         # The prey is fleeing
+print(fish.eat())
+print(fish.name)
+
+
+print(Fish.__mro__)
