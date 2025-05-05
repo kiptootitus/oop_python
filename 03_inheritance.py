@@ -50,4 +50,22 @@ print(dog_1.sleeping())
 
 print(duck_1.eat())
 print(horse_1.name)
-print(horse_1.sleeping())  
+print(horse_1.sleeping())
+
+
+# this is superclass 
+class Animal:
+    def __init__(self, name): # parent cclass constructor
+        self.name = name
+        print(f"Animal created: {self.name}")
+# The following code demonstrates the use of a superclass and subclass
+# with the `super()` function to call the parent class constructor.
+# while this is subclass 
+class Dog(Animal):
+    def __init__(self, name, breed):
+        super().__init__(name)  # Call parent constructor
+        self.breed = breed
+        print(f"Dog breed: {self.breed}")
+
+# Usage
+d = Dog("Buddy", "Labrador")
